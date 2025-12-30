@@ -139,7 +139,7 @@
             min-height: 45px;
             margin-bottom: 10px;
             font-size: 13px;
-            color: #999;
+            color: #333;
         }
         
         .scoring-row {
@@ -366,32 +366,76 @@
         .footer-branding strong {
             color: #1e3c72;
         }
-        
-        @media print {
-            body {
-                background: white;
-            }
-            
-            .page {
-                page-break-after: always;
-                border: none;
-                box-shadow: none;
-            }
-            
-            .score-box {
-                border: 1px solid #999;
-            }
-        }
-        
+
         .checkbox-input {
             width: 18px;
             height: 18px;
             cursor: pointer;
             margin-right: 8px;
         }
+
+        /* --- PDF BUTTON STYLES --- */
+        #pdf-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #ff4757;
+            color: white;
+            border: none;
+            padding: 15px 25px;
+            border-radius: 50px;
+            font-weight: 700;
+            cursor: pointer;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+            z-index: 9999;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        #pdf-btn:hover {
+            transform: scale(1.05);
+            background: #ff6b81;
+        }
+
+        /* --- PRINT ADJUSTMENTS --- */
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            #pdf-btn {
+                display: none !important;
+            }
+            .container {
+                max-width: 100%;
+                margin: 0;
+            }
+            .page {
+                page-break-after: always;
+                border: none;
+                box-shadow: none;
+                min-height: auto;
+                padding: 40px;
+            }
+            .score-box {
+                border: 1px solid #999;
+                -webkit-print-color-adjust: exact;
+            }
+            .active {
+                background-color: #2a5298 !important;
+                color: white !important;
+            }
+        }
     </style>
 </head>
 <body>
+
+    <button id="pdf-btn" onclick="window.print()">
+        <span>💾</span> Save Scorecard as PDF
+    </button>
+
     <div class="container">
         <div class="page page-cover">
             <div class="badge">Trusted by Founders Hiring Remote Marketing Leaders</div>
@@ -410,7 +454,7 @@
             </div>
             
             <div class="footer-text">
-                Downloaded: <input type="text" placeholder="[Date]" style="border: none; background: rgba(255,255,255,0.3); color: white; width: 150px; padding: 5px; border-radius: 3px; text-align: center;">
+                Candidate: <input type="text" placeholder="[Name]" style="border: none; background: rgba(255,255,255,0.3); color: white; width: 150px; padding: 5px; border-radius: 3px; text-align: center;">
             </div>
         </div>
         
@@ -606,64 +650,17 @@
                 <div class="rubric-text">Obvious, platitudes, or completely misses the mark. ("Marketing is important") Shows no domain research.</div>
             </div>
             
-            <div class="pro-tip" style="margin-top: 40px;">
-                <strong>🎯 Quick Calibration Hack:</strong> A score of 4–5 should take you 10+ minutes to verify. If you're giving 5s in 2 minutes, you're probably scoring too high. Architects make you work for it.
-            </div>
-            
-            <h2 style="margin-top: 40px;">What to Look for in the "Stack" Conversation</h2>
-            <p style="color: #666; margin-bottom: 15px; font-size: 14px;">Best fCMOs will articulate a repeatable team structure:</p>
-            
-            <div style="background: #f9f9f9; padding: 20px; border-radius: 6px; border-left: 4px solid #2a5298;">
-                <p style="font-size: 14px; margin-bottom: 12px;"><strong>Example Execution Stack:</strong></p>
-                <ul style="list-style-position: inside; color: #333; font-size: 13px; line-height: 1.8;">
-                    <li>Copywriter ($50–80/hr) for landing pages & emails</li>
-                    <li>Designer ($60–100/hr) for creative assets</li>
-                    <li>Paid media specialist ($40–60/hr) for campaign optimization</li>
-                    <li>You or internal ops person: project management</li>
-                </ul>
-                <p style="font-size: 13px; color: #666; margin-top: 12px;"><em>A good fCMO names the role, tells you the hourly rate, and explains why each matters.</em></p>
-            </div>
-        </div>
-        
-        <div class="page">
-            <h2>You Hired an Architect. Now What?</h2>
-            <p style="color: #666; margin-bottom: 25px; font-size: 15px;">Follow this playbook to extract maximum value from your fractional CMO partnership.</p>
-            
-            <ol class="next-steps">
-                <li><strong>30-Day Strategy Sprint:</strong> Allocate $5K for deep-dive audit. Output: clear ICP, positioning, funnel gaps, channel priorities.</li>
-                <li><strong>Define the Execution Stack:</strong> Together, agree on freelancer roles, tools, and monthly budget to make strategy real.</li>
-                <li><strong>Weekly Async Check-Ins:</strong> No syncs unless critical. Use Loom videos, Slack updates, and monthly scorecards.</li>
-                <li><strong>90-Day Revenue Milestone:</strong> Tie engagement to 1 clear KPI: CAC reduction, qualified lead growth, or positioning wins.</li>
-                <li><strong>Scale or Exit:</strong> After 90 days, either hire a full-time Director or renew fractional engagement for deeper strategic work.</li>
-            </ol>
-            
-            <div class="pro-tip">
-                <strong>⏱️ Timeline Expectation:</strong> Strategy clarification (2–4 weeks) → Execution ramp (4–8 weeks) → Impact (week 8–12). Don't expect revenue changes in week 1. Expect positioning clarity in week 2.
-            </div>
-            
-            <div class="cta-section">
-                <h3>Ready to Hire Your Next Marketing Leader?</h3>
-                <p style="margin-top: 10px; font-size: 15px;">Join 1,800+ founders and marketers accessing verified remote roles ($50K–$250K) every week (USA).</p>
-                
-                <a href="https://marketersremote.com" class="cta-button">Get 30+ Verified Remote Marketing Jobs</a>
-                
-                <p style="margin-top: 20px; font-size: 13px; opacity: 0.9;">Free members: 3 Editor's Picks | Paid members: Full 7-day job feed + salary benchmarks</p>
-            </div>
-            
             <div class="footer-branding">
                 <strong>MarketersRemote.com</strong><br>
-                Weekly Remote Marketing Jobs | $50K–$250K Roles at Leading Companies<br>
-                Trusted by 1,800+ Marketing Professionals | Personalized Career Services<br>
+                Weekly Remote Marketing Jobs | $50K–$250K Roles<br>
                 <span style="font-size: 11px; opacity: 0.8;">© 2026 MarketersRemote. All rights reserved.</span>
             </div>
         </div>
     </div>
     
     <script>
-        // Logic to calculate the ACTUAL sum of scores
         function calculateTotal() {
             let grandTotal = 0;
-            // Loop through each question row (1-5)
             for (let i = 1; i <= 5; i++) {
                 const activeBox = document.querySelector(`.scoring-row[data-question="${i}"] .score-box.active`);
                 if (activeBox) {
@@ -673,19 +670,11 @@
             document.getElementById('totalScoreDisplay').textContent = grandTotal + ' / 25';
         }
 
-        // Add click listeners to score boxes
         document.querySelectorAll('.score-box').forEach(box => {
             box.addEventListener('click', function() {
-                // 1. Get the parent row
                 const parentRow = this.parentElement;
-                
-                // 2. Deselect all other boxes in THIS row only
                 parentRow.querySelectorAll('.score-box').forEach(b => b.classList.remove('active'));
-                
-                // 3. Select the clicked box
                 this.classList.add('active');
-                
-                // 4. Recalculate the sum
                 calculateTotal();
             });
         });
