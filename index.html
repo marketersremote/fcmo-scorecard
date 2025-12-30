@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>fCMO Hiring Scorecard - MarketersRemote</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f5f5f5;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 850px;
+            margin: 0 auto;
+            background: white;
+        }
+        
+        .page {
+            page-break-after: always;
+            padding: 60px 50px;
+            min-height: 1100px;
+            border-bottom: 1px solid #e0e0e0;
+            background: white;
+        }
+        
+        .page:last-child {
+            border-bottom: none;
+        }
+        
+        /* Page 1: Cover */
+        .page-cover {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 80px 50px;
+        }
+        
+        .page-cover h1 {
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            letter-spacing: -1px;
+        }
+        
+        .page-cover .subtitle {
+            font-size: 24px;
+            font-weight: 300;
+            margin-bottom: 40px;
+            opacity: 0.95;
+        }
+        
+        .page-cover .badge {
+            background: rgba(255,255,255,0.2);
+            padding: 15px 25px;
+            border-radius: 30px;
+            margin-bottom: 30px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+        
+        .page-cover .quote {
+            font-size: 16px;
+            font-style: italic;
+            margin-top: 40px;
+            opacity: 0.9;
+            border-left: 3px solid white;
+            padding-left: 20px;
+        }
+        
+        .page-cover .footer-text {
+            margin-top: 60px;
+            font-size: 13px;
+            opacity: 0.8;
+        }
+        
+        h2 {
+            font-size: 32px;
+            color: #1e3c72;
+            margin-bottom: 25px;
+            font-weight: 700;
+        }
+        
+        h3 {
+            font-size: 16px;
+            color: #2a5298;
+            font-weight: 700;
+            margin-top: 25px;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .question-block {
+            background: #f9f9f9;
+            border-left: 4px solid #2a5298;
+            padding: 20px;
+            margin-bottom: 25px;
+            border-radius: 4px;
+        }
+        
+        .question-block .question {
+            font-size: 15px;
+            font-weight: 600;
+            color: #1e3c72;
+            margin-bottom: 10px;
+        }
+        
+        .question-block .ask {
+            font-size: 14px;
+            color: #555;
+            margin-bottom: 12px;
+            font-style: italic;
+        }
+        
+        .question-block .notes-label {
+            font-size: 12px;
+            color: #777;
+            font-weight: 600;
+            margin-top: 12px;
+            margin-bottom: 6px;
+        }
+        
+        .notes-field {
+            background: white;
+            border: 1px dotted #ccc;
+            padding: 10px;
+            min-height: 45px;
+            margin-bottom: 10px;
+            font-size: 13px;
+            color: #999;
+        }
+        
+        .scoring-row {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        
+        .scoring-row label {
+            font-size: 13px;
+            color: #555;
+            min-width: 60px;
+        }
+        
+        .score-box {
+            width: 32px;
+            height: 32px;
+            border: 2px solid #ddd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            border-radius: 3px;
+            font-weight: 600;
+            color: #666;
+            font-size: 12px;
+            transition: all 0.2s;
+        }
+        
+        .score-box:hover {
+            border-color: #2a5298;
+            background: #f0f5ff;
+        }
+        
+        .score-box.active {
+            background: #2a5298;
+            color: white;
+            border-color: #2a5298;
+        }
+        
+        .red-flag {
+            background: #fff3cd;
+            border-left: 4px solid #ff6b6b;
+            padding: 12px 15px;
+            margin-top: 10px;
+            border-radius: 3px;
+            font-size: 13px;
+            color: #333;
+        }
+        
+        .red-flag::before {
+            content: "⚠️ Red Flag: ";
+            font-weight: 700;
+            color: #ff6b6b;
+        }
+        
+        .total-section {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 8px;
+            margin-top: 30px;
+            text-align: center;
+        }
+        
+        .total-section .label {
+            font-size: 16px;
+            opacity: 0.9;
+            margin-bottom: 10px;
+        }
+        
+        .total-section .score {
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+        
+        .threshold {
+            background: white;
+            color: #333;
+            padding: 15px;
+            margin-bottom: 10px;
+            border-radius: 4px;
+            font-size: 14px;
+            text-align: left;
+        }
+        
+        .threshold strong {
+            color: #2a5298;
+        }
+        
+        .disqualifier-list {
+            list-style: none;
+            margin: 20px 0;
+        }
+        
+        .disqualifier-list li {
+            padding: 10px 0;
+            padding-left: 25px;
+            position: relative;
+            font-size: 14px;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .disqualifier-list li::before {
+            content: "❌";
+            position: absolute;
+            left: 0;
+        }
+        
+        .decision-tree {
+            background: #f9f9f9;
+            padding: 20px;
+            border-radius: 6px;
+            margin: 20px 0;
+            border: 1px solid #ddd;
+        }
+        
+        .decision-tree .tree-item {
+            margin-bottom: 15px;
+            font-size: 14px;
+            line-height: 1.8;
+        }
+        
+        .decision-tree strong {
+            color: #2a5298;
+        }
+        
+        .rubric-grid {
+            display: grid;
+            grid-template-columns: 1fr 4fr;
+            gap: 15px;
+            margin: 15px 0;
+        }
+        
+        .rubric-score {
+            background: #f9f9f9;
+            padding: 12px;
+            border-radius: 4px;
+            font-weight: 700;
+            color: #2a5298;
+            min-width: 50px;
+        }
+        
+        .rubric-text {
+            padding: 12px 0;
+            font-size: 14px;
+            color: #555;
+        }
+        
+        .next-steps {
+            list-style: decimal;
+            list-style-position: inside;
+            margin: 20px 0;
+        }
+        
+        .next-steps li {
+            margin-bottom: 12px;
+            font-size: 14px;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .cta-section {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 8px;
+            text-align: center;
+            margin-top: 30px;
+        }
+        
+        .cta-section h3 {
+            color: white;
+            text-transform: none;
+            letter-spacing: normal;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background: white;
+            color: #2a5298;
+            padding: 12px 30px;
+            border-radius: 6px;
+            font-weight: 700;
+            margin-top: 15px;
+            text-decoration: none;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.3s;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+        
+        .pro-tip {
+            background: #e7f3ff;
+            border-left: 4px solid #2a5298;
+            padding: 15px;
+            border-radius: 4px;
+            margin: 20px 0;
+            font-size: 14px;
+            color: #333;
+            line-height: 1.7;
+        }
+        
+        .pro-tip strong {
+            color: #2a5298;
+        }
+        
+        .footer-branding {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #ddd;
+            font-size: 12px;
+            color: #777;
+        }
+        
+        .footer-branding strong {
+            color: #1e3c72;
+        }
+        
+        @media print {
+            body {
+                background: white;
+            }
+            
+            .page {
+                page-break-after: always;
+                border: none;
+                box-shadow: none;
+            }
+            
+            .score-box {
+                border: 1px solid #999;
+            }
+        }
+        
+        .checkbox-input {
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+            margin-right: 8px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- PAGE 1: COVER -->
+        <div class="page page-cover">
+            <div class="badge">Trusted by Founders Hiring Remote Marketing Leaders</div>
+            <h1>fCMO HIRING SCORECARD</h1>
+            <div class="subtitle">Separate Advisors from Architects in 15 Minutes</div>
+            
+            <div style="background: rgba(255,255,255,0.15); height: 1px; width: 100px; margin: 30px auto;"></div>
+            
+            <p style="font-size: 16px; margin-bottom: 20px;">
+                <strong>$50K–$250K Roles</strong> | <strong>MarketersRemote.com</strong>
+            </p>
+            
+            <div class="quote">
+                "Cut hiring time by 40% – our members place remote marketing leaders faster."<br>
+                <em style="font-size: 13px;">— MarketersRemote Vetting Data</em>
+            </div>
+            
+            <div class="footer-text">
+                Downloaded: <input type="text" placeholder="[Date]" style="border: none; background: rgba(255,255,255,0.3); color: white; width: 150px; padding: 5px; border-radius: 3px; text-align: center;">
+            </div>
+        </div>
+        
+        <!-- PAGE 2: CORE VETTING QUESTIONS -->
+        <div class="page">
+            <h2>Core Vetting Questions</h2>
+            <p style="color: #666; margin-bottom: 25px; font-size: 15px;">Score each candidate 1–5 (1=Weak | 5=Exceptional). Each question takes ~5 minutes.</p>
+            
+            <!-- Question 1 -->
+            <div class="question-block">
+                <div style="display: flex; align-items: flex-start; gap: 10px;">
+                    <input type="checkbox" class="checkbox-input" style="margin-top: 4px;">
+                    <div style="flex: 1;">
+                        <h3 style="margin-top: 0;">1. Market Pattern Recognition</h3>
+                        <div class="ask">ASK: "What pattern have you seen in [YOUR INDUSTRY] in the last 6 months that we're likely missing?"</div>
+                        
+                        <div class="notes-label">Notes:</div>
+                        <div class="notes-field"></div>
+                        
+                        <div class="scoring-row">
+                            <label>Score:</label>
+                            <div class="score-box" onclick="this.classList.toggle('active')">1</div>
+                            <div class="score-box" onclick="this.classList.toggle('active')">2</div>
+                            <div class="score-box" onclick="this.classList.toggle('active')">3</div>
+                            <div class="score-box" onclick="this.classList.toggle('active')">4</div>
+                            <div class="score-box" onclick="this.classList.toggle('active')">5</div>
+                        </div>
+                        
+                        <div class="red-flag">Generic advice ("SEO is important")</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Question 2 -->
+            <div class="question-block">
+                <div style="display: flex; align-items: flex-start; gap: 10px;">
+                    <input type="checkbox" class="checkbox-input" style="margin-top: 4px;">
+                    <div style="flex: 1;">
+                        <h3 style="margin-top: 0;">2. Execution Stack Audit</h3>
+                        <div class="ask">ASK: "What specific freelancers, tools, or roles do I need to execute your strategy?"</div>
+                        
+                        <div class="notes-label">Notes:</div>
+                        <div class="notes-field"></div>
+                        
+                        <div class="scoring-row">
+                            <label>Score:</label>
+                            <div class="score-box" onclick="this.classList.toggle('active')">1</div>
+                            <div class="score-box" onclick="this.classList.toggle('active')">2</div>
+                            <div class="score-box" onclick="this.classList.toggle('active')">3</div>
+                            <div class="score-box" onclick="this.classList.toggle('active')">4</div>
+                            <div class="score-box" onclick="this.classList.toggle('active')">5</div>
+                        </div>
+                        
+                        <div class="red-flag">"I'll do it all myself" (you need a strategist, not a doer)</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Question 3 -->
+            <div class="question-block">
+                <div style="display: flex; align-items: flex-start; gap: 10px;">
+                    <input type="checkbox" class="checkbox-input" style="margin-top: 4px;">
+                    <div style="flex: 1;">
+                        <h3 style="margin-top: 0;">3. Conflict Resolution Test</h3>
+                        <div class="ask">ASK: "Tell me about a time you told a founder their strategy was wrong. What data point changed their mind?"</div>
+                        
+                        <div class="notes-label">Notes:</div>
+                        <div class="notes-field"></div>
+                        
+                        <div class="scoring-row">
+                            <label>Score:</label>
+                            <div class="score-box" onclick="this.classList.toggle('active')">1</div>
+                            <div class="score-box" onclick="this.classList.toggle('active')">2</div>
+                            <div class="score-box" onclick="this.classList.toggle('active')">3</div>
+                            <div class="score-box" onclick="this.classList.toggle('active')">4</div>
+                            <div class="score-box" onclick="this.classList.toggle('active')">5</div>
+                        </div>
+                        
+                        <div class="red-flag">Never challenged leadership or avoids accountability</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- PAGE 3: ADVANCED CHECKS & TOTAL SCORE -->
+        <div class="page">
+            <h2>Advanced Checks + Total Score</h2>
+            
+            <!-- Question 4 -->
+            <div class="question-block">
+                <div style="display: flex; align-items: flex-start; gap: 10px;">
+                    <input type="checkbox" class="checkbox-input" style="margin-top: 4px;">
+                    <div style="flex: 1;">
+                        <h3 style="margin-top: 0;">4. Milestone Clarity</h3>
+                        <div class="ask">Does success = "hours logged" or "CAC down 25%"? (Architects measure by impact.)</div>
+                        
+                        <div class="scoring-row">
+                            <label>Score:</label>
+                            <div class="score-box" onclick="this.classList.toggle('active')">1</div>
+                            <div class="score-box" onclick="this.classList.toggle('active')">2</div>
+                            <div class="score-box" onclick="this.classList.toggle('active')">3</div>
+                            <div class="score-box" onclick="this.classList.toggle('active')">4</div>
+                            <div class="score-box" onclick="this.classList.toggle('active')">5</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Question 5 -->
+            <div class="question-block">
+                <div style="display: flex; align-items: flex-start; gap: 10px;">
+                    <input type="checkbox" class="checkbox-input" style="margin-top: 4px;">
+                    <div style="flex: 1;">
+                        <h3 style="margin-top: 0;">5. Async Communication</h3>
+                        <div class="ask">Clear process for remote work, or will they clog your calendar with syncs?</div>
+                        
+                        <div class="scoring-row">
+                            <label>Score:</label>
+                            <div class="score-box" onclick="this.classList.toggle('active')">1</div>
+                            <div class="score-box" onclick="this.classList.toggle('active')">2</div>
+                            <div class="score-box" onclick="this.classList.toggle('active')">3</div>
+                            <div class="score-box" onclick="this.classList.toggle('active')">4</div>
+                            <div class="score-box" onclick="this.classList.toggle('active')">5</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- TOTAL SCORE SECTION -->
+            <div class="total-section">
+                <div class="label">Total Score</div>
+                <div class="score" id="totalScore">__ / 25</div>
+                <input type="text" placeholder="Enter your total here" style="width: 100px; padding: 8px; border: none; border-radius: 4px; text-align: center; font-weight: 700; font-size: 16px;">
+            </div>
+            
+            <!-- HIRE THRESHOLDS -->
+            <h3 style="margin-top: 30px;">Hire Thresholds</h3>
+            <div class="threshold">
+                <strong style="color: #27ae60;">22–25: Hire Immediately</strong><br>
+                <span style="font-size: 13px;">Architect-level thinker. Move fast.</span>
+            </div>
+            <div class="threshold">
+                <strong style="color: #f39c12;">17–21: Strong Contingent</strong><br>
+                <span style="font-size: 13px;">Test with a 30-day project before full engagement.</span>
+            </div>
+            <div class="threshold">
+                <strong style="color: #e74c3c;">&lt;17: Pass</strong><br>
+                <span style="font-size: 13px;">Consider for advisory-only or junior leadership roles.</span>
+            </div>
+        </div>
+        
+        <!-- PAGE 4: RED FLAGS & DECISION TREE -->
+        <div class="page">
+            <h2>Instant Disqualifiers</h2>
+            <ul class="disqualifier-list">
+                <li>Vague hourly rates without clear milestone-based deliverables</li>
+                <li>No remote team management experience or async work examples</li>
+                <li>"I do everything" mentality (you need strategy, not a doer)</li>
+                <li>Can't name 2–3 competitors' funnel leaks or positioning gaps</li>
+                <li>No examples of building repeatable frameworks or systems</li>
+            </ul>
+            
+            <h2 style="margin-top: 40px;">fCMO vs. Full-Time Director Decision Tree</h2>
+            
+            <div class="decision-tree">
+                <div class="tree-item">
+                    <strong>Strategy is fuzzy or ICP is unclear?</strong><br>
+                    → <strong style="color: #2a5298;">Hire a Fractional CMO</strong> (You need the Map)
+                </div>
+                <div class="tree-item">
+                    <strong>Execution is stalled or founder still approves every post?</strong><br>
+                    → <strong style="color: #2a5298;">Hire a Full-Time Director</strong> (You need the Driver)
+                </div>
+                <div class="tree-item">
+                    <strong>Both strategy and execution are broken?</strong><br>
+                    → <strong style="color: #2a5298;">Hire fCMO first (30–60 days), then add Director</strong>
+                </div>
+            </div>
+            
+            <div class="pro-tip">
+                <strong>💡 Why Top fCMOs Command $6K–$10K/Month:</strong> They save you $50K+ in wrong hires and wasted quarters. They've seen the pattern in your industry before. They know exactly where your funnel leaks without a 3-month audit.
+            </div>
+        </div>
+        
+        <!-- PAGE 5: SCORING RUBRIC & PRO TIP -->
+        <div class="page">
+            <h2>Scoring Rubric Reference</h2>
+            <p style="color: #666; margin-bottom: 20px;">Use this guide to calibrate your scoring across all 5 questions.</p>
+            
+            <div class="rubric-grid">
+                <div class="rubric-score">5</div>
+                <div class="rubric-text">Industry-first insight. Named your competitors' weaknesses. Data-backed. Specific to your business model.</div>
+                
+                <div class="rubric-score">4</div>
+                <div class="rubric-text">Specific and actionable. 80% relevant to your stage. Clear how to execute. No fluff.</div>
+                
+                <div class="rubric-score">3</div>
+                <div class="rubric-text">Solid but somewhat generic to your industry/stage. Would apply to 50% of similar companies.</div>
+                
+                <div class="rubric-score">2</div>
+                <div class="rubric-text">Relevant but lacks depth, examples, or clarity. Would need follow-up questions to understand fully.</div>
+                
+                <div class="rubric-score">1</div>
+                <div class="rubric-text">Obvious, platitudes, or completely misses the mark. ("Marketing is important") Shows no domain research.</div>
+            </div>
+            
+            <div class="pro-tip" style="margin-top: 40px;">
+                <strong>🎯 Quick Calibration Hack:</strong> A score of 4–5 should take you 10+ minutes to verify. If you're giving 5s in 2 minutes, you're probably scoring too high. Architects make you work for it.
+            </div>
+            
+            <h2 style="margin-top: 40px;">What to Look for in the "Stack" Conversation</h2>
+            <p style="color: #666; margin-bottom: 15px; font-size: 14px;">Best fCMOs will articulate a repeatable team structure:</p>
+            
+            <div style="background: #f9f9f9; padding: 20px; border-radius: 6px; border-left: 4px solid #2a5298;">
+                <p style="font-size: 14px; margin-bottom: 12px;"><strong>Example Execution Stack:</strong></p>
+                <ul style="list-style-position: inside; color: #333; font-size: 13px; line-height: 1.8;">
+                    <li>Copywriter ($50–80/hr) for landing pages & emails</li>
+                    <li>Designer ($60–100/hr) for creative assets</li>
+                    <li>Paid media specialist ($40–60/hr) for campaign optimization</li>
+                    <li>You or internal ops person: project management</li>
+                </ul>
+                <p style="font-size: 13px; color: #666; margin-top: 12px;"><em>A good fCMO names the role, tells you the hourly rate, and explains why each matters.</em></p>
+            </div>
+        </div>
+        
+        <!-- PAGE 6: NEXT STEPS & BRANDING -->
+        <div class="page">
+            <h2>You Hired an Architect. Now What?</h2>
+            <p style="color: #666; margin-bottom: 25px; font-size: 15px;">Follow this playbook to extract maximum value from your fractional CMO partnership.</p>
+            
+            <ol class="next-steps">
+                <li><strong>30-Day Strategy Sprint:</strong> Allocate $5K for deep-dive audit. Output: clear ICP, positioning, funnel gaps, channel priorities.</li>
+                <li><strong>Define the Execution Stack:</strong> Together, agree on freelancer roles, tools, and monthly budget to make strategy real.</li>
+                <li><strong>Weekly Async Check-Ins:</strong> No syncs unless critical. Use Loom videos, Slack updates, and monthly scorecards.</li>
+                <li><strong>90-Day Revenue Milestone:</strong> Tie engagement to 1 clear KPI: CAC reduction, qualified lead growth, or positioning wins.</li>
+                <li><strong>Scale or Exit:</strong> After 90 days, either hire a full-time Director or renew fractional engagement for deeper strategic work.</li>
+            </ol>
+            
+            <div class="pro-tip">
+                <strong>⏱️ Timeline Expectation:</strong> Strategy clarification (2–4 weeks) → Execution ramp (4–8 weeks) → Impact (week 8–12). Don't expect revenue changes in week 1. Expect positioning clarity in week 2.
+            </div>
+            
+            <!-- CTA SECTION -->
+            <div class="cta-section">
+                <h3>Ready to Hire Your Next Marketing Leader?</h3>
+                <p style="margin-top: 10px; font-size: 15px;">Join 1,800+ founders and marketers accessing verified remote roles ($50K–$250K) every week.</p>
+                
+                <a href="https://marketersremote.com" class="cta-button">Unlock 42+ Verified Remote Marketing Jobs</a>
+                
+                <p style="margin-top: 20px; font-size: 13px; opacity: 0.9;">Free members: 3 Editor's Picks | Paid members: Full 7-day job feed + salary benchmarks</p>
+            </div>
+            
+            <!-- FOOTER -->
+            <div class="footer-branding">
+                <strong>MarketersRemote.com</strong><br>
+                Weekly Remote Marketing Jobs | $50K–$250K Roles at Leading Companies<br>
+                Trusted by 1,800+ Marketing Professionals | Personalized Career Services<br>
+                <span style="font-size: 11px; opacity: 0.8;">© 2025 MarketersRemote. All rights reserved.</span>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Print button functionality
+        function printPDF() {
+            window.print();
+        }
+        
+        // Auto-calculate total score
+        function updateTotalScore() {
+            const scores = document.querySelectorAll('.score-box.active');
+            const total = scores.length;
+            document.getElementById('totalScore').textContent = total + ' / 25';
+        }
+        
+        // Add click listeners to score boxes
+        document.querySelectorAll('.score-box').forEach(box => {
+            box.addEventListener('click', updateTotalScore);
+        });
+    </script>
+</body>
+</html>
