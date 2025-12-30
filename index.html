@@ -176,9 +176,9 @@
         }
         
         .score-box.active {
-            background: #2a5298;
-            color: white;
-            border-color: #2a5298;
+            background: #2a5298 !important;
+            color: white !important;
+            border-color: #2a5298 !important;
         }
         
         .red-flag {
@@ -393,7 +393,6 @@
 </head>
 <body>
     <div class="container">
-        <!-- PAGE 1: COVER -->
         <div class="page page-cover">
             <div class="badge">Trusted by Founders Hiring Remote Marketing Leaders</div>
             <h1>fCMO HIRING SCORECARD</h1>
@@ -415,12 +414,10 @@
             </div>
         </div>
         
-        <!-- PAGE 2: CORE VETTING QUESTIONS -->
         <div class="page">
             <h2>Core Vetting Questions</h2>
             <p style="color: #666; margin-bottom: 25px; font-size: 15px;">Score each candidate 1–5 (1=Weak | 5=Exceptional). Each question takes ~5 minutes.</p>
             
-            <!-- Question 1 -->
             <div class="question-block">
                 <div style="display: flex; align-items: flex-start; gap: 10px;">
                     <input type="checkbox" class="checkbox-input" style="margin-top: 4px;">
@@ -429,15 +426,15 @@
                         <div class="ask">ASK: "What pattern have you seen in [YOUR INDUSTRY] in the last 6 months that we're likely missing?"</div>
                         
                         <div class="notes-label">Notes:</div>
-                        <div class="notes-field"></div>
+                        <div class="notes-field" contenteditable="true"></div>
                         
-                        <div class="scoring-row">
+                        <div class="scoring-row" data-question="1">
                             <label>Score:</label>
-                            <div class="score-box" onclick="this.classList.toggle('active')">1</div>
-                            <div class="score-box" onclick="this.classList.toggle('active')">2</div>
-                            <div class="score-box" onclick="this.classList.toggle('active')">3</div>
-                            <div class="score-box" onclick="this.classList.toggle('active')">4</div>
-                            <div class="score-box" onclick="this.classList.toggle('active')">5</div>
+                            <div class="score-box" data-value="1">1</div>
+                            <div class="score-box" data-value="2">2</div>
+                            <div class="score-box" data-value="3">3</div>
+                            <div class="score-box" data-value="4">4</div>
+                            <div class="score-box" data-value="5">5</div>
                         </div>
                         
                         <div class="red-flag">Generic advice ("SEO is important")</div>
@@ -445,7 +442,6 @@
                 </div>
             </div>
             
-            <!-- Question 2 -->
             <div class="question-block">
                 <div style="display: flex; align-items: flex-start; gap: 10px;">
                     <input type="checkbox" class="checkbox-input" style="margin-top: 4px;">
@@ -454,15 +450,15 @@
                         <div class="ask">ASK: "What specific freelancers, tools, or roles do I need to execute your strategy?"</div>
                         
                         <div class="notes-label">Notes:</div>
-                        <div class="notes-field"></div>
+                        <div class="notes-field" contenteditable="true"></div>
                         
-                        <div class="scoring-row">
+                        <div class="scoring-row" data-question="2">
                             <label>Score:</label>
-                            <div class="score-box" onclick="this.classList.toggle('active')">1</div>
-                            <div class="score-box" onclick="this.classList.toggle('active')">2</div>
-                            <div class="score-box" onclick="this.classList.toggle('active')">3</div>
-                            <div class="score-box" onclick="this.classList.toggle('active')">4</div>
-                            <div class="score-box" onclick="this.classList.toggle('active')">5</div>
+                            <div class="score-box" data-value="1">1</div>
+                            <div class="score-box" data-value="2">2</div>
+                            <div class="score-box" data-value="3">3</div>
+                            <div class="score-box" data-value="4">4</div>
+                            <div class="score-box" data-value="5">5</div>
                         </div>
                         
                         <div class="red-flag">"I'll do it all myself" (you need a strategist, not a doer)</div>
@@ -470,7 +466,6 @@
                 </div>
             </div>
             
-            <!-- Question 3 -->
             <div class="question-block">
                 <div style="display: flex; align-items: flex-start; gap: 10px;">
                     <input type="checkbox" class="checkbox-input" style="margin-top: 4px;">
@@ -479,15 +474,15 @@
                         <div class="ask">ASK: "Tell me about a time you told a founder their strategy was wrong. What data point changed their mind?"</div>
                         
                         <div class="notes-label">Notes:</div>
-                        <div class="notes-field"></div>
+                        <div class="notes-field" contenteditable="true"></div>
                         
-                        <div class="scoring-row">
+                        <div class="scoring-row" data-question="3">
                             <label>Score:</label>
-                            <div class="score-box" onclick="this.classList.toggle('active')">1</div>
-                            <div class="score-box" onclick="this.classList.toggle('active')">2</div>
-                            <div class="score-box" onclick="this.classList.toggle('active')">3</div>
-                            <div class="score-box" onclick="this.classList.toggle('active')">4</div>
-                            <div class="score-box" onclick="this.classList.toggle('active')">5</div>
+                            <div class="score-box" data-value="1">1</div>
+                            <div class="score-box" data-value="2">2</div>
+                            <div class="score-box" data-value="3">3</div>
+                            <div class="score-box" data-value="4">4</div>
+                            <div class="score-box" data-value="5">5</div>
                         </div>
                         
                         <div class="red-flag">Never challenged leadership or avoids accountability</div>
@@ -496,11 +491,9 @@
             </div>
         </div>
         
-        <!-- PAGE 3: ADVANCED CHECKS & TOTAL SCORE -->
         <div class="page">
             <h2>Advanced Checks + Total Score</h2>
             
-            <!-- Question 4 -->
             <div class="question-block">
                 <div style="display: flex; align-items: flex-start; gap: 10px;">
                     <input type="checkbox" class="checkbox-input" style="margin-top: 4px;">
@@ -508,19 +501,18 @@
                         <h3 style="margin-top: 0;">4. Milestone Clarity</h3>
                         <div class="ask">Does success = "hours logged" or "CAC down 25%"? (Architects measure by impact.)</div>
                         
-                        <div class="scoring-row">
+                        <div class="scoring-row" data-question="4">
                             <label>Score:</label>
-                            <div class="score-box" onclick="this.classList.toggle('active')">1</div>
-                            <div class="score-box" onclick="this.classList.toggle('active')">2</div>
-                            <div class="score-box" onclick="this.classList.toggle('active')">3</div>
-                            <div class="score-box" onclick="this.classList.toggle('active')">4</div>
-                            <div class="score-box" onclick="this.classList.toggle('active')">5</div>
+                            <div class="score-box" data-value="1">1</div>
+                            <div class="score-box" data-value="2">2</div>
+                            <div class="score-box" data-value="3">3</div>
+                            <div class="score-box" data-value="4">4</div>
+                            <div class="score-box" data-value="5">5</div>
                         </div>
                     </div>
                 </div>
             </div>
             
-            <!-- Question 5 -->
             <div class="question-block">
                 <div style="display: flex; align-items: flex-start; gap: 10px;">
                     <input type="checkbox" class="checkbox-input" style="margin-top: 4px;">
@@ -528,26 +520,24 @@
                         <h3 style="margin-top: 0;">5. Async Communication</h3>
                         <div class="ask">Clear process for remote work, or will they clog your calendar with syncs?</div>
                         
-                        <div class="scoring-row">
+                        <div class="scoring-row" data-question="5">
                             <label>Score:</label>
-                            <div class="score-box" onclick="this.classList.toggle('active')">1</div>
-                            <div class="score-box" onclick="this.classList.toggle('active')">2</div>
-                            <div class="score-box" onclick="this.classList.toggle('active')">3</div>
-                            <div class="score-box" onclick="this.classList.toggle('active')">4</div>
-                            <div class="score-box" onclick="this.classList.toggle('active')">5</div>
+                            <div class="score-box" data-value="1">1</div>
+                            <div class="score-box" data-value="2">2</div>
+                            <div class="score-box" data-value="3">3</div>
+                            <div class="score-box" data-value="4">4</div>
+                            <div class="score-box" data-value="5">5</div>
                         </div>
                     </div>
                 </div>
             </div>
             
-            <!-- TOTAL SCORE SECTION -->
             <div class="total-section">
                 <div class="label">Total Score</div>
-                <div class="score" id="totalScore">__ / 25</div>
-                <input type="text" placeholder="Enter your total here" style="width: 100px; padding: 8px; border: none; border-radius: 4px; text-align: center; font-weight: 700; font-size: 16px;">
+                <div class="score" id="totalScoreDisplay">0 / 25</div>
+                <p style="font-size: 12px; opacity: 0.8;">Scores update automatically as you click boxes above.</p>
             </div>
             
-            <!-- HIRE THRESHOLDS -->
             <h3 style="margin-top: 30px;">Hire Thresholds</h3>
             <div class="threshold">
                 <strong style="color: #27ae60;">22–25: Hire Immediately</strong><br>
@@ -563,7 +553,6 @@
             </div>
         </div>
         
-        <!-- PAGE 4: RED FLAGS & DECISION TREE -->
         <div class="page">
             <h2>Instant Disqualifiers</h2>
             <ul class="disqualifier-list">
@@ -596,7 +585,6 @@
             </div>
         </div>
         
-        <!-- PAGE 5: SCORING RUBRIC & PRO TIP -->
         <div class="page">
             <h2>Scoring Rubric Reference</h2>
             <p style="color: #666; margin-bottom: 20px;">Use this guide to calibrate your scoring across all 5 questions.</p>
@@ -637,7 +625,6 @@
             </div>
         </div>
         
-        <!-- PAGE 6: NEXT STEPS & BRANDING -->
         <div class="page">
             <h2>You Hired an Architect. Now What?</h2>
             <p style="color: #666; margin-bottom: 25px; font-size: 15px;">Follow this playbook to extract maximum value from your fractional CMO partnership.</p>
@@ -654,42 +641,53 @@
                 <strong>⏱️ Timeline Expectation:</strong> Strategy clarification (2–4 weeks) → Execution ramp (4–8 weeks) → Impact (week 8–12). Don't expect revenue changes in week 1. Expect positioning clarity in week 2.
             </div>
             
-            <!-- CTA SECTION -->
             <div class="cta-section">
                 <h3>Ready to Hire Your Next Marketing Leader?</h3>
-                <p style="margin-top: 10px; font-size: 15px;">Join 1,800+ founders and marketers accessing verified remote roles ($50K–$250K) every week.</p>
+                <p style="margin-top: 10px; font-size: 15px;">Join 1,800+ founders and marketers accessing verified remote roles ($50K–$250K) every week (USA).</p>
                 
-                <a href="https://marketersremote.com" class="cta-button">Unlock 42+ Verified Remote Marketing Jobs</a>
+                <a href="https://marketersremote.com" class="cta-button">Get 30+ Verified Remote Marketing Jobs</a>
                 
                 <p style="margin-top: 20px; font-size: 13px; opacity: 0.9;">Free members: 3 Editor's Picks | Paid members: Full 7-day job feed + salary benchmarks</p>
             </div>
             
-            <!-- FOOTER -->
             <div class="footer-branding">
                 <strong>MarketersRemote.com</strong><br>
                 Weekly Remote Marketing Jobs | $50K–$250K Roles at Leading Companies<br>
                 Trusted by 1,800+ Marketing Professionals | Personalized Career Services<br>
-                <span style="font-size: 11px; opacity: 0.8;">© 2025 MarketersRemote. All rights reserved.</span>
+                <span style="font-size: 11px; opacity: 0.8;">© 2026 MarketersRemote. All rights reserved.</span>
             </div>
         </div>
     </div>
     
     <script>
-        // Print button functionality
-        function printPDF() {
-            window.print();
+        // Logic to calculate the ACTUAL sum of scores
+        function calculateTotal() {
+            let grandTotal = 0;
+            // Loop through each question row (1-5)
+            for (let i = 1; i <= 5; i++) {
+                const activeBox = document.querySelector(`.scoring-row[data-question="${i}"] .score-box.active`);
+                if (activeBox) {
+                    grandTotal += parseInt(activeBox.getAttribute('data-value'));
+                }
+            }
+            document.getElementById('totalScoreDisplay').textContent = grandTotal + ' / 25';
         }
-        
-        // Auto-calculate total score
-        function updateTotalScore() {
-            const scores = document.querySelectorAll('.score-box.active');
-            const total = scores.length;
-            document.getElementById('totalScore').textContent = total + ' / 25';
-        }
-        
+
         // Add click listeners to score boxes
         document.querySelectorAll('.score-box').forEach(box => {
-            box.addEventListener('click', updateTotalScore);
+            box.addEventListener('click', function() {
+                // 1. Get the parent row
+                const parentRow = this.parentElement;
+                
+                // 2. Deselect all other boxes in THIS row only
+                parentRow.querySelectorAll('.score-box').forEach(b => b.classList.remove('active'));
+                
+                // 3. Select the clicked box
+                this.classList.add('active');
+                
+                // 4. Recalculate the sum
+                calculateTotal();
+            });
         });
     </script>
 </body>
