@@ -29,6 +29,7 @@
             min-height: 1100px;
             border-bottom: 1px solid #e0e0e0;
             background: white;
+            position: relative;
         }
         
         .page:last-child {
@@ -110,13 +111,6 @@
             border-radius: 4px;
         }
         
-        .question-block .question {
-            font-size: 15px;
-            font-weight: 600;
-            color: #1e3c72;
-            margin-bottom: 10px;
-        }
-        
         .question-block .ask {
             font-size: 14px;
             color: #555;
@@ -140,6 +134,7 @@
             margin-bottom: 10px;
             font-size: 13px;
             color: #333;
+            outline: none;
         }
         
         .scoring-row {
@@ -226,6 +221,7 @@
             border-radius: 4px;
             font-size: 14px;
             text-align: left;
+            border: 1px solid #eee;
         }
         
         .threshold strong {
@@ -283,26 +279,13 @@
             border-radius: 4px;
             font-weight: 700;
             color: #2a5298;
-            min-width: 50px;
+            text-align: center;
         }
         
         .rubric-text {
             padding: 12px 0;
             font-size: 14px;
             color: #555;
-        }
-        
-        .next-steps {
-            list-style: decimal;
-            list-style-position: inside;
-            margin: 20px 0;
-        }
-        
-        .next-steps li {
-            margin-bottom: 12px;
-            font-size: 14px;
-            color: #333;
-            line-height: 1.6;
         }
         
         .cta-section {
@@ -314,12 +297,6 @@
             margin-top: 30px;
         }
         
-        .cta-section h3 {
-            color: white;
-            text-transform: none;
-            letter-spacing: normal;
-        }
-        
         .cta-button {
             display: inline-block;
             background: white;
@@ -329,14 +306,8 @@
             font-weight: 700;
             margin-top: 15px;
             text-decoration: none;
-            cursor: pointer;
             font-size: 14px;
             transition: all 0.3s;
-        }
-        
-        .cta-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
         }
         
         .pro-tip {
@@ -350,10 +321,6 @@
             line-height: 1.7;
         }
         
-        .pro-tip strong {
-            color: #2a5298;
-        }
-        
         .footer-branding {
             text-align: center;
             margin-top: 40px;
@@ -362,19 +329,13 @@
             font-size: 12px;
             color: #777;
         }
-        
-        .footer-branding strong {
-            color: #1e3c72;
-        }
 
         .checkbox-input {
             width: 18px;
             height: 18px;
             cursor: pointer;
-            margin-right: 8px;
         }
 
-        /* --- PDF BUTTON STYLES --- */
         #pdf-btn {
             position: fixed;
             bottom: 30px;
@@ -388,57 +349,27 @@
             cursor: pointer;
             box-shadow: 0 10px 20px rgba(0,0,0,0.2);
             z-index: 9999;
-            transition: all 0.3s;
             display: flex;
             align-items: center;
             gap: 10px;
         }
 
-        #pdf-btn:hover {
-            transform: scale(1.05);
-            background: #ff6b81;
-        }
-
-/* --- PRINT ADJUSTMENTS --- */
         @media print {
-            /* This removes the browser headers and footers */
-            @page {
-                margin: 0;
+            @page { margin: 0; }
+            body { background: white; padding: 0; margin: 0; }
+            #pdf-btn { display: none !important; }
+            .container { max-width: 100%; margin: 0; }
+            .page { 
+                page-break-after: always; 
+                border: none; 
+                padding: 1.5cm;
+                min-height: 29.7cm; /* A4 Height */
             }
-
-            body {
-                background: white;
-                padding: 0;
-                margin: 0; /* Ensures content doesn't shift */
-            }
-
-            #pdf-btn {
-                display: none !important;
-            }
-
-            .container {
-                max-width: 100%;
-                margin: 0;
-            }
-
-            .page {
-                page-break-after: always;
-                border: none;
-                box-shadow: none;
-                min-height: auto;
-                /* Add padding here so your content isn't touching the edge of the paper */
-                padding: 1.5cm; 
-            }
-
-            .score-box {
-                border: 1px solid #999;
-                -webkit-print-color-adjust: exact;
-            }
-
-            .active {
-                background-color: #2a5298 !important;
-                color: white !important;
-                -webkit-print-color-adjust: exact;
+            .notes-field { border: 1px solid #ccc !important; }
+            .active { 
+                background-color: #2a5298 !important; 
+                color: white !important; 
+                -webkit-print-color-adjust: exact; 
             }
         }
     </style>
@@ -454,18 +385,14 @@
             <div class="badge">Trusted by Founders Hiring Remote Marketing Leaders</div>
             <h1>fCMO HIRING SCORECARD</h1>
             <div class="subtitle">Separate Advisors from Architects in 15 Minutes</div>
-            
             <div style="background: rgba(255,255,255,0.15); height: 1px; width: 100px; margin: 30px auto;"></div>
-            
             <p style="font-size: 16px; margin-bottom: 20px;">
                 <strong>$50K–$250K Roles</strong> | <strong>MarketersRemote.com</strong>
             </p>
-            
             <div class="quote">
                 "Cut hiring time by 40% – our members place remote marketing leaders faster."<br>
                 <em style="font-size: 13px;">— MarketersRemote Vetting Data</em>
             </div>
-            
             <div class="footer-text">
                 Candidate: <input type="text" placeholder="[Name]" style="border: none; background: rgba(255,255,255,0.3); color: white; width: 150px; padding: 5px; border-radius: 3px; text-align: center;">
             </div>
@@ -473,7 +400,7 @@
         
         <div class="page">
             <h2>Core Vetting Questions</h2>
-            <p style="color: #666; margin-bottom: 25px; font-size: 15px;">Score each candidate 1–5 (1=Weak | 5=Exceptional). Each question takes ~5 minutes.</p>
+            <p style="color: #666; margin-bottom: 25px; font-size: 15px;">Score each candidate 1–5 (1=Weak | 5=Exceptional).</p>
             
             <div class="question-block">
                 <div style="display: flex; align-items: flex-start; gap: 10px;">
@@ -481,10 +408,8 @@
                     <div style="flex: 1;">
                         <h3 style="margin-top: 0;">1. Market Pattern Recognition</h3>
                         <div class="ask">ASK: "What pattern have you seen in [YOUR INDUSTRY] in the last 6 months that we're likely missing?"</div>
-                        
                         <div class="notes-label">Notes:</div>
                         <div class="notes-field" contenteditable="true"></div>
-                        
                         <div class="scoring-row" data-question="1">
                             <label>Score:</label>
                             <div class="score-box" data-value="1">1</div>
@@ -493,7 +418,6 @@
                             <div class="score-box" data-value="4">4</div>
                             <div class="score-box" data-value="5">5</div>
                         </div>
-                        
                         <div class="red-flag">Generic advice ("SEO is important")</div>
                     </div>
                 </div>
@@ -505,10 +429,8 @@
                     <div style="flex: 1;">
                         <h3 style="margin-top: 0;">2. Execution Stack Audit</h3>
                         <div class="ask">ASK: "What specific freelancers, tools, or roles do I need to execute your strategy?"</div>
-                        
                         <div class="notes-label">Notes:</div>
                         <div class="notes-field" contenteditable="true"></div>
-                        
                         <div class="scoring-row" data-question="2">
                             <label>Score:</label>
                             <div class="score-box" data-value="1">1</div>
@@ -517,7 +439,6 @@
                             <div class="score-box" data-value="4">4</div>
                             <div class="score-box" data-value="5">5</div>
                         </div>
-                        
                         <div class="red-flag">"I'll do it all myself" (you need a strategist, not a doer)</div>
                     </div>
                 </div>
@@ -529,10 +450,8 @@
                     <div style="flex: 1;">
                         <h3 style="margin-top: 0;">3. Conflict Resolution Test</h3>
                         <div class="ask">ASK: "Tell me about a time you told a founder their strategy was wrong. What data point changed their mind?"</div>
-                        
                         <div class="notes-label">Notes:</div>
                         <div class="notes-field" contenteditable="true"></div>
-                        
                         <div class="scoring-row" data-question="3">
                             <label>Score:</label>
                             <div class="score-box" data-value="1">1</div>
@@ -541,7 +460,6 @@
                             <div class="score-box" data-value="4">4</div>
                             <div class="score-box" data-value="5">5</div>
                         </div>
-                        
                         <div class="red-flag">Never challenged leadership or avoids accountability</div>
                     </div>
                 </div>
@@ -556,8 +474,7 @@
                     <input type="checkbox" class="checkbox-input" style="margin-top: 4px;">
                     <div style="flex: 1;">
                         <h3 style="margin-top: 0;">4. Milestone Clarity</h3>
-                        <div class="ask">Does success = "hours logged" or "CAC down 25%"? (Architects measure by impact.)</div>
-                        
+                        <div class="ask">Does success = "hours logged" or "CAC down 25%"?</div>
                         <div class="scoring-row" data-question="4">
                             <label>Score:</label>
                             <div class="score-box" data-value="1">1</div>
@@ -575,8 +492,7 @@
                     <input type="checkbox" class="checkbox-input" style="margin-top: 4px;">
                     <div style="flex: 1;">
                         <h3 style="margin-top: 0;">5. Async Communication</h3>
-                        <div class="ask">Clear process for remote work, or will they clog your calendar with syncs?</div>
-                        
+                        <div class="ask">Clear process for remote work, or calendar clogging?</div>
                         <div class="scoring-row" data-question="5">
                             <label>Score:</label>
                             <div class="score-box" data-value="1">1</div>
@@ -591,8 +507,8 @@
             
             <div class="total-section">
                 <div class="label">Total Score</div>
-                <div class="score" id="totalScoreDisplay">0 / 25</div>
-                <p style="font-size: 12px; opacity: 0.8;">Scores update automatically as you click boxes above.</p>
+                <div class="score totalScoreDisplay">0 / 25</div>
+                <p style="font-size: 12px; opacity: 0.8;">Scores update automatically as you select values.</p>
             </div>
             
             <h3 style="margin-top: 30px;">Hire Thresholds</h3>
@@ -602,11 +518,11 @@
             </div>
             <div class="threshold">
                 <strong style="color: #f39c12;">17–21: Strong Contingent</strong><br>
-                <span style="font-size: 13px;">Test with a 30-day project before full engagement.</span>
+                <span style="font-size: 13px;">Test with a 30-day project first.</span>
             </div>
             <div class="threshold">
                 <strong style="color: #e74c3c;">&lt;17: Pass</strong><br>
-                <span style="font-size: 13px;">Consider for advisory-only or junior leadership roles.</span>
+                <span style="font-size: 13px;">Consider for advisory-only roles.</span>
             </div>
         </div>
         
@@ -621,14 +537,13 @@
             </ul>
             
             <h2 style="margin-top: 40px;">fCMO vs. Full-Time Director Decision Tree</h2>
-            
             <div class="decision-tree">
                 <div class="tree-item">
                     <strong>Strategy is fuzzy or ICP is unclear?</strong><br>
                     → <strong style="color: #2a5298;">Hire a Fractional CMO</strong> (You need the Map)
                 </div>
                 <div class="tree-item">
-                    <strong>Execution is stalled or founder still approves every post?</strong><br>
+                    <strong>Execution is stalled or founder still approves posts?</strong><br>
                     → <strong style="color: #2a5298;">Hire a Full-Time Director</strong> (You need the Driver)
                 </div>
                 <div class="tree-item">
@@ -638,35 +553,49 @@
             </div>
             
             <div class="pro-tip">
-                <strong>💡 Why Top fCMOs Command $6K–$10K/Month:</strong> They save you $50K+ in wrong hires and wasted quarters. They've seen the pattern in your industry before. They know exactly where your funnel leaks without a 3-month audit.
+                <strong>💡 Why Top fCMOs Command $6K–$10K/Month:</strong> They save you $50K+ in wrong hires and wasted quarters. They know where your funnel leaks without a 3-month audit.
             </div>
         </div>
         
         <div class="page">
             <h2>Scoring Rubric Reference</h2>
-            <p style="color: #666; margin-bottom: 20px;">Use this guide to calibrate your scoring across all 5 questions.</p>
+            <p style="color: #666; margin-bottom: 20px;">Calibration guide for scoring.</p>
             
             <div class="rubric-grid">
                 <div class="rubric-score">5</div>
-                <div class="rubric-text">Industry-first insight. Named your competitors' weaknesses. Data-backed. Specific to your business model.</div>
+                <div class="rubric-text">Industry-first insight. Named competitors' weaknesses. Data-backed. Specific to your model.</div>
                 
                 <div class="rubric-score">4</div>
-                <div class="rubric-text">Specific and actionable. 80% relevant to your stage. Clear how to execute. No fluff.</div>
+                <div class="rubric-text">Actionable. 80% relevant to your stage. Clear how to execute. No fluff.</div>
                 
                 <div class="rubric-score">3</div>
-                <div class="rubric-text">Solid but somewhat generic to your industry/stage. Would apply to 50% of similar companies.</div>
+                <div class="rubric-text">Solid but somewhat generic. Applies to 50% of similar companies.</div>
                 
                 <div class="rubric-score">2</div>
-                <div class="rubric-text">Relevant but lacks depth, examples, or clarity. Would need follow-up questions to understand fully.</div>
+                <div class="rubric-text">Relevant but lacks depth. Would need significant follow-up.</div>
                 
                 <div class="rubric-score">1</div>
-                <div class="rubric-text">Obvious, platitudes, or completely misses the mark. ("Marketing is important") Shows no domain research.</div>
+                <div class="rubric-text">Obvious platitudes. ("Marketing is important"). Shows no research.</div>
             </div>
-            
+        </div>
+
+        <div class="page">
+            <h2>Final Alignment</h2>
+            <div class="total-section">
+                <div class="score totalScoreDisplay">0 / 25</div>
+                <p>Calculated Total Score</p>
+            </div>
+
+            <div class="cta-section">
+                <h3 style="color:white; text-transform: none; margin-top:0;">Ready to Hire Your Next Marketing Leader?</h3>
+                <p style="margin-top: 10px;">Join founders accessing verified remote roles.</p>
+                <a href="https://marketersremote.com" class="cta-button">Browse Remote Marketing Jobs</a>
+            </div>
+
             <div class="footer-branding">
                 <strong>MarketersRemote.com</strong><br>
                 Weekly Remote Marketing Jobs | $50K–$250K Roles<br>
-                <span style="font-size: 11px; opacity: 0.8;">© 2026 MarketersRemote. All rights reserved.</span>
+                © 2026 MarketersRemote. All rights reserved.
             </div>
         </div>
     </div>
@@ -680,7 +609,10 @@
                     grandTotal += parseInt(activeBox.getAttribute('data-value'));
                 }
             }
-            document.getElementById('totalScoreDisplay').textContent = grandTotal + ' / 25';
+            // Update all elements with the class 'totalScoreDisplay'
+            document.querySelectorAll('.totalScoreDisplay').forEach(el => {
+                el.textContent = grandTotal + ' / 25';
+            });
         }
 
         document.querySelectorAll('.score-box').forEach(box => {
