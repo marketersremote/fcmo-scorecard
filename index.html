@@ -399,33 +399,46 @@
             background: #ff6b81;
         }
 
-        /* --- PRINT ADJUSTMENTS --- */
+/* --- PRINT ADJUSTMENTS --- */
         @media print {
+            /* This removes the browser headers and footers */
+            @page {
+                margin: 0;
+            }
+
             body {
                 background: white;
                 padding: 0;
+                margin: 0; /* Ensures content doesn't shift */
             }
+
             #pdf-btn {
                 display: none !important;
             }
+
             .container {
                 max-width: 100%;
                 margin: 0;
             }
+
             .page {
                 page-break-after: always;
                 border: none;
                 box-shadow: none;
                 min-height: auto;
-                padding: 40px;
+                /* Add padding here so your content isn't touching the edge of the paper */
+                padding: 1.5cm; 
             }
+
             .score-box {
                 border: 1px solid #999;
                 -webkit-print-color-adjust: exact;
             }
+
             .active {
                 background-color: #2a5298 !important;
                 color: white !important;
+                -webkit-print-color-adjust: exact;
             }
         }
     </style>
